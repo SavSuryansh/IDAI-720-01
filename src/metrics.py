@@ -16,7 +16,7 @@ class Metrics:
         # return: EOD = TPR(s=1)-TPR(s=0)
         # TPR = #(y=1, y_pred=1) / #(y=1)
         # Write your code below:
-        sensitive = np.array(s_attr)
+        sensitive = np.array(s)
         condition_positive = self.actual == 1
         tpr1 = np.mean(self.predictions[condition_positive & (sensitive == 1)] == 1)
         tpr0 = np.mean(self.predictions[condition_positive & (sensitive == 0)] == 1)
@@ -29,7 +29,7 @@ class Metrics:
         # TPR = #(y=1, y_pred=1) / #(y=1)
         # FPR = #(y=0, y_pred=1) / #(y=0)
         # Write your code below:
-        sensitive = np.array(s_attr)
+        sensitive = np.array(s)
         true_pos = self.actual == 1
         false_pos = self.actual == 0
         tpr1 = np.mean(self.predictions[true_pos & (sensitive == 1)] == 1)
@@ -44,7 +44,7 @@ class Metrics:
         # return: SPD = |PR(s=1)-PR(s=0)|
         # PR = #(y_pred=1) / #y
         # Write your code below:
-        sensitive = np.array(s_attr)
+        sensitive = np.array(s)
         pr1 = np.mean(self.predictions[sensitive == 1] == 1)
         pr0 = np.mean(self.predictions[sensitive == 0] == 1)
         return pr1 - pr0
